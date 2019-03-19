@@ -11,17 +11,15 @@
 
         Dim list As List(Of Customer) = Customer.CreateList()
 
-        Dim csvHeader As String = "Company, Name, EmailAddress" & vbCr
-        Dim csvBody As String = ""
+        Dim sb As New StringBuilder()
+        sb.Append("Company, Name, EmailAddress" & vbCr)
 
         'build body
         For Each c As Customer In list
-            csvBody &= c.Company & ", "
-            csvBody &= c.Name & ", "
-            csvBody &= c.EmailAddress & vbCr
+            sb.Append($"{c.Company}, {c.Name}, {c.EmailAddress}" + vbCr)
         Next
 
-        ViewBag.CsvReport = csvHeader & csvBody
+        ViewBag.CsvReport = sb.ToString()
 
         Return View()
 
