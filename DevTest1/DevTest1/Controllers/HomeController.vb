@@ -20,7 +20,8 @@
             csvBody &= c.Name & ", "
             csvBody &= c.EmailAddress & vbCr
         Next
-
+    'For a large data set ViewBag can be a performance bottleneck; I think use the ViewModel and pass the ViewModel to cshtml page to bind the 
+    'data can improve the performance.
         ViewBag.CsvReport = csvHeader & csvBody
 
         Return View()
