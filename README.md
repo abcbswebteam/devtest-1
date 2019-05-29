@@ -15,3 +15,14 @@ In your pull request
 ## Constraints
 * Do not change the Customers class.
 * Do not use any additional libraries (no additional nuget packages).
+
+
+## Explanation
+* In the HomeController.vb file, there is a For Each loop over the list of customers.
+* In the code provided, the csvBody string variable is being concatenated 3 times per iteration.
+* Since, in the CLR, strings are immutable, this is adding a new string object to the heap
+    * 3 times per iteration. This is a very large memory and performance problem.
+* Using a StringBuilder object is a much better solution because it allows you to have a mutable string object.
+    * This allows you to append values to a string without adding new memory allocations to the heap.
+    * Once the appending is done, the StringBuilder.ToString() method returns a string (object) value.
+* Thus, using a StringBuilder object in lieu of repeatedly concatenting a string should decrease the run time.
