@@ -12,8 +12,8 @@
         Dim list As List(Of Customer) = Customer.CreateList()
 
         Dim csvHeader As String = "Company, Name, EmailAddress" & vbCr
-        Dim csvBody As String = ""
-        Dim csvBodySB = New StringBuilder()
+        'Dim csvBody As String = ""
+        Dim csvBodySB As StringBuilder = New StringBuilder()
 
         'build body
         For Each c As Customer In list
