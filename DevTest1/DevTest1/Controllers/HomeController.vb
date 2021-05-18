@@ -13,15 +13,22 @@
 
         Dim csvHeader As String = "Company, Name, EmailAddress" & vbCr
         Dim csvBody As String = ""
+        Dim csvBodySB = New StringBuilder()
 
         'build body
         For Each c As Customer In list
-            csvBody &= c.Company & ", "
-            csvBody &= c.Name & ", "
-            csvBody &= c.EmailAddress & vbCr
+            csvBodySB.Append(c.Company)
+            csvBodySB.Append(", ")
+            csvBodySB.Append(c.Name)
+            csvBodySB.Append(", ")
+            csvBodySB.Append(c.EmailAddress)
+            csvBodySB.Append(vbCr)
+            'csvBody &= c.Company & ", "
+            'csvBody &= c.Name & ", "
+            'csvBody &= c.EmailAddress & vbCr
         Next
 
-        ViewBag.CsvReport = csvHeader & csvBody
+        ViewBag.CsvReport = csvHeader & csvBodySB.ToString()
 
         Return View()
 
